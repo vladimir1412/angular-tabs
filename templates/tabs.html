@@ -1,0 +1,30 @@
+<ul class="nav nav-pills">
+  <li ng-class="{active: selected == 1}" ng-init="selected=1">
+    <a href ng-click="selected = 1">Users</a>
+  </li>
+  <li ng-class="{active: selected == 2}">
+    <a href ng-click="selected=2">Car Purchases</a>
+  </li>
+  <li ng-class="{active: selected == 3}">
+    <a href ng-click="selected=3">Uploads</a>
+  </li>
+  <li class="pull-right col-md-4 ">
+    <div class="input-group pull-right">
+      <input type="text" ng-show="selected == 1" class="form-control" placeholder="Search"  ng-model="userSearch">
+      <span class="input-group-btn">
+        <button type="button" ng-show="selected == 1" class="btn btn-info btn-md"  data-toggle="modal" data-target="#myModal">Add New</button>
+      </span>
+    </div>
+  </li>
+  <li class="pull-right col-md-6">
+    <div class="input-group pull-right">
+      <input type="text" ng-show="selected == 2" class="form-control" placeholder="Search"  ng-model="carSearch">
+    </div>
+
+  </li>
+  <li class="pull-right col-md-6">
+    <div class="input-group pull-right">
+      <input type="text" ng-show="selected == 3" class="form-control" placeholder="Search"  ng-model="uploadSearch">
+    </div>
+  </li>
+</ul>

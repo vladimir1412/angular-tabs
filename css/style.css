@@ -1,0 +1,16 @@
+.main-container {
+  position: relative;
+  top: 40px; }
+  .main-container table {
+    margin-top: 5px; }
+    .main-container table thead tr:first-child {
+      background: dodgerblue;
+      color: #fff; }
+    .main-container table thead tr th a {
+      color: #fff; }
+    .main-container table tfoot tr {
+      background: silver; }
+      .main-container table tfoot tr td {
+        color: #fff; }
+
+/*# sourceMappingURL=style.css.map */

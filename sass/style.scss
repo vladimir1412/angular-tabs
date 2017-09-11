@@ -1,0 +1,43 @@
+.main-container {
+  position: relative;
+  top: 40px;
+
+  .row {
+    .tab {
+      .nav {
+        .warn {
+          margin-top: 10px !important;
+        }
+      }
+    }
+  }
+
+  table {
+    margin-top: 5px;
+
+    thead {
+      tr {
+        &:first-child {
+          background: dodgerblue;
+          color: #fff;
+        }
+
+        th {
+          a {
+            color: #fff;
+          }
+        }
+      }
+    }
+
+    tfoot {
+      tr {
+        background: silver;
+
+        td {
+          color: #fff;
+        }
+      }
+    }
+  }
+}

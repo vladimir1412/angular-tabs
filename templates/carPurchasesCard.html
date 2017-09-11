@@ -1,0 +1,51 @@
+<div ng-show="selected == 2">
+  <table class="table table table-striped ">
+    <thead>
+      <tr>
+        <th>
+          <a href="#" ng-click="orderByField='car'">
+          Car Name
+           <span ng-show="orderByField == 'car'">
+             <span ng-show="!reverseSort">^</span>
+          </a>
+        </th>
+        <th>
+          <a href="#" ng-click="orderByField='payment_method'">
+            Payment Method
+           <span ng-show="orderByField == 'payment_method'"><span ng-show="!reverseSort">^</span>
+          </a>
+        </th>
+        <th>
+          <a href="#" ng-click="orderByField='currency'">
+            Currency
+           <span ng-show="orderByField == 'currency'"><span ng-show="!reverseSort">^</span>
+          </a>
+        </th>
+        <th>
+          <a href="#" ng-click="orderByField='city'">
+            City
+           <span ng-show="orderByField == 'city'"><span ng-show="!reverseSort">^</span>
+          </a>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="carPurchace in carPurchaces | orderBy:orderByField | filter:carSearch">
+        <td>{{carPurchace.car}}</td>
+        <td>{{carPurchace.payment_method}}</td>
+        <td>{{carPurchace.currency}}</td>
+        <td>{{carPurchace.city}}</td>
+      </tr>
+      <tr>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>Total items: {{ (carPurchaces | filter: carSearch).length }}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tfoot>
+  </table>
+</div>

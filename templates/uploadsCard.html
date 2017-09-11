@@ -1,0 +1,46 @@
+<div ng-show="selected == 3">
+  <table class="table table table-striped">
+    <thead>
+      <tr>
+        <th>
+          <a href="#" ng-click="orderByField='username'">
+          Username
+           <span ng-show="orderByField == 'username'">
+             <span ng-show="!reverseSort">^</span>
+           </span>
+          </a>
+        </th>
+        <th>
+          <a href="#" ng-click="orderByField='filename'">
+        Filename
+         <span ng-show="orderByField == 'filename'">
+           <span ng-show="!reverseSort">^</span>
+        </span>
+        </a>
+        </th>
+        <th>
+          <a href="#" ng-click="orderByField='-date'">
+        Uploaded
+        <span ng-show="orderByField == 'date'">
+          <span ng-show="!reverseSort">^</span>
+        </span>
+        </a>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="upload in uploads | orderBy:orderByField | filter:uploadSearch" ng-init="upload.date = formatDate(upload.datetime.date, upload.datetime.time)">
+        <td>{{upload.username}}</td>
+        <td>{{upload.filename}}</td>
+        <td am-time-ago="upload.date"></td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>Total items: {{ (uploads | filter: uploadSearch).length }}</td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tfoot>
+  </table>
+</div>

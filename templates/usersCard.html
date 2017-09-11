@@ -1,0 +1,141 @@
+<div ng-show="selected == 1">
+  <div class="alert alert-success" ng-if="message">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> {{message}}
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>
+          <a href="#" ng-click="orderByField='first_name'">
+          First Name
+           <span ng-show="orderByField == 'first_name'"><span ng-show="!reverseSort">^</span>
+          </a>
+        </th>
+        <th>
+          <a href="#" ng-click="orderByField='last_name'">
+          Last Name
+           <span ng-show="orderByField == 'last_name'"><span ng-show="!reverseSort">^</span>
+          </a>
+        </th>
+        <th>
+          <a href="#" ng-click="orderByField='email'">
+          Email
+          <span ng-show="orderByField == 'email'"><span ng-show="!reverseSort">^</span>
+          </a>
+        </th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-show="users.length > 0" ng-repeat="user in users | orderBy:orderByField | filter:userSearch">
+        <td>{{user.first_name}}</td>
+        <td>{{user.last_name}}</td>
+        <td>{{user.email}}</td>
+        <td>
+          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalEdit" ng-click="selectUser(user)">Edit</button>
+        </td>
+        <td>
+          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModalDelete" ng-click="selectUser(user)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>Total items: {{ (users | filter: userSearch).length }}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tfoot>
+  </table>
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">New User</h4>
+        </div>
+        <div class="modal-body">
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label class="control-label col-sm-3" for="first_name">First Name</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" ng-model="newUser.first_name">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-3" for="last_name">Last Name</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" ng-model="newUser.last_name">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-sm-3" for="email">Email</label>
+              <div class="col-sm-9">
+                <input type="email" class="form-control" ng-model="newUser.email">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="saveUser()">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="myModalEdit" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">New User</h4>
+        </div>
+        <div class="modal-body">
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label class="control-label col-sm-3" for="first_name">First Name</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" ng-model="clickedUser.first_name">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-3" for="last_name">Last Name</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" ng-model="clickedUser.last_name">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-3" for="email">Email</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" ng-model="clickedUser.email">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="updateUser()">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="myModalDelete" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">New User</h4>
+        </div>
+        <div class="modal-body">
+          You are going to delete <strong>{{clickedUser.first_name + ' ' + clickedUser.last_name}}</strong>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default btn-danger" data-dismiss="modal" ng-click="deleteUser()">Yes</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
